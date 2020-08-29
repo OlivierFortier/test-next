@@ -3,7 +3,7 @@ import styles from "../styles/Profs.module.css";
 
 export default function Profs({ professeurs }) {
   return (
-    <div className={styles.conteneur}>
+    <div >
       <h1>Voici la liste des professeurs</h1>
 
       {professeurs.map((professeur) => {

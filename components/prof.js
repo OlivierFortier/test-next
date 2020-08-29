@@ -1,18 +1,21 @@
+import BioProf from './bioProf'
+
 export default function Prof({
   styles,
   leProf: {
     Nom,
     DescriptionCourte,
-    biographie: { Biographie },
+    biographie,
   },
 }) {
   return (
     <div className={styles.conteneur}>
-      <h2>{Nom}</h2>
+       
+      <h2 className={styles.nomProf}>{Nom}</h2>
 
       <h3>{DescriptionCourte}</h3>
 
-      <p>{Biographie}</p>
+      <BioProf laBio={biographie}/>
     </div>
   );
 }
