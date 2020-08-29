@@ -15,7 +15,7 @@ export default function Prof({
 
       <h3>{DescriptionCourte}</h3>
 
-      <BioProf laBio={biographie}/>
+      <BioProf laBio={biographie} key={biographie.id}/>
     </div>
   );
 }
