@@ -1,9 +1,9 @@
-export default function BioProf({laBio : {Biographie}}) {
+export default function BioProf({laBio : {description}}) {
 
     
     return (
         <p>
-            {Biographie}
+            {description}
         </p>
     )
 }
