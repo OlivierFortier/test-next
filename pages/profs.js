@@ -1,4 +1,6 @@
 import Prof from "../components/prof";
+
+// on peut auss importer du CSS avec React
 import styles from "../styles/Profs.module.css";
 
 export default function Profs({ professeurs }) {

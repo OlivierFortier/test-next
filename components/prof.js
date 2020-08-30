@@ -1,3 +1,5 @@
+
+//on importe les composants dont nous avons besoin
 import BioProf from "./bioProf";
 import { useState } from "react";
 
@@ -23,6 +25,11 @@ export default function Prof({ styles, leProf: { Nom, DescriptionCourte, biograp
 
       <h3 style={{ border: "12px solid brown" }}>{DescriptionCourte}</h3>
 
+                    {/* avec React , quand on veut ajouter une fonction a un bouton,
+                        on doit mettre la fonction a l'intérieur d'une fonction.
+                        c'est pour ca que les fonctions flechées : 
+                        () => {}
+                        sonts utiles ! */}
       <button onClick={() => { setBioOuvert(!bioOuvert); }} > + </button>
 
       { //si bioOuvert est 'true' alors afficher le composant BioProf
