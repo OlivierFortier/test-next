@@ -10,7 +10,7 @@ import { useState } from "react";
                                 Il est toutefois possible de le faire quand même
                                 avec la bonne vielle syntaxe d'objet avec les '.'
                                 comme tel : props.leProf.Nom */             
-export default function Prof({ styles, leProf: { nom, description, biography } }) {
+export default function Prof({ styles, leProf: { nom, description, biography, photo : { formats: { thumbnail : { url}} } } }) {
 
     //un 'hook' de React , ca permet de gérer l'état d'un composant.
     // dans ce cas-ci , on gère si le bouton '+' est cliqué ou pas.
@@ -22,6 +22,8 @@ export default function Prof({ styles, leProf: { nom, description, biography } }
   return (
     <div className={styles.conteneur}>
       <h2 className={styles.nomProf}>{nom}</h2>
+
+      <img src={"http://localhost:1337"+url}></img>
 
       <h3 style={{ border: "12px solid brown" }}>{description}</h3>
 
