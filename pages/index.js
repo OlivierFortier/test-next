@@ -19,6 +19,11 @@ export default function Home() {
           <code className={styles.code}>pages/index.js</code>
         </p>
 
+        <a href="/profs" className={styles.card}>
+            <h3>Profs</h3>
+            <p>tester strapi et nextJS</p>
+          </a>
+
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
             <h3>Documentation &rarr;</h3>
