@@ -23,9 +23,9 @@ export default function Prof({ styles, prof }) {
     <div className={styles.conteneur}>
       <h2 className={styles.nomProf}>{prof.node.nom[0].text}</h2>
 
-      <img src={prof.node.photo.url}></img>
-
-      <h3 style={{ border: "12px solid brown" }}>{prof.node.description[0].text}</h3>
+     {prof.node.photo.url && <img src={prof.node.photo.url}></img>}
+    
+      <h3 style={{ border: "12px solid brown" }}>{prof.node.description}</h3>
 
                     {/* avec React , quand on veut ajouter une fonction a un bouton,
                         on doit mettre la fonction a l'intérieur d'une fonction.
