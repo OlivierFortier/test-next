@@ -2,6 +2,8 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 
+//page d'accueil en JSX. voyez, c'est comme du html, 
+//sauf que c'est dans une fonction JS qu'on peut réutiliser
 export default function Home() {
   return (
     <div className={styles.container}>
