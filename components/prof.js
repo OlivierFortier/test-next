@@ -10,7 +10,7 @@ import { useState } from "react";
                                 Il est toutefois possible de le faire quand même
                                 avec la bonne vielle syntaxe d'objet avec les '.'
                                 comme tel : props.leProf.Nom */             
-export default function Prof({ styles, leProf: { nom, description, biography, photo : { formats: { thumbnail : { url}} } } }) {
+export default function Prof({ styles, prof }) {
 
     //un 'hook' de React , ca permet de gérer l'état d'un composant.
     // dans ce cas-ci , on gère si le bouton '+' est cliqué ou pas.
@@ -21,11 +21,11 @@ export default function Prof({ styles, leProf: { nom, description, biography, ph
   // on peut insérer du code JS dans le html directement avec les {} et {{}}
   return (
     <div className={styles.conteneur}>
-      <h2 className={styles.nomProf}>{nom}</h2>
+      <h2 className={styles.nomProf}>{prof.node.nom[0].text}</h2>
 
-      <img src={"http://localhost:1337"+url}></img>
+      <img src={prof.node.photo.url}></img>
 
-      <h3 style={{ border: "12px solid brown" }}>{description}</h3>
+      <h3 style={{ border: "12px solid brown" }}>{prof.node.description[0].text}</h3>
 
                     {/* avec React , quand on veut ajouter une fonction a un bouton,
                         on doit mettre la fonction a l'intérieur d'une fonction.
@@ -35,7 +35,7 @@ export default function Prof({ styles, leProf: { nom, description, biography, ph
       <button onClick={() => { setBioOuvert(!bioOuvert); }} > + </button>
 
       { //si bioOuvert est 'true' alors afficher le composant BioProf
-      bioOuvert && <BioProf laBio={biography} key={biography.id} />
+      bioOuvert && <h1>{prof.node.biographie[0].text}</h1>
       }
     </div>
   );

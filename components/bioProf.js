@@ -1,4 +1,4 @@
-export default function BioProf({laBio : {description}}) {
+export default function BioProf( description ) {
 
     
     return (
