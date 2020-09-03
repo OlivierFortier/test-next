@@ -3,17 +3,13 @@ import Prof from "../components/prof";
 // on peut auss importer du CSS avec React
 import styles from "../styles/Profs.module.css";
 
-import { PrismicLink } from "apollo-link-prismic";
-import { InMemoryCache } from "apollo-cache-inmemory";
-import ApolloClient from "apollo-client";
+import {client} from "../libs/apollo"
+
+// import { PrismicLink } from "apollo-link-prismic";
+// import { InMemoryCache } from "apollo-cache-inmemory";
+// import ApolloClient from "apollo-client";
 import gql from "graphql-tag";
 
-const client = new ApolloClient({
-  link: PrismicLink({
-    uri: "https://tim-nextjs-test.cdn.prismic.io/graphql",
-  }),
-  cache: new InMemoryCache(),
-});
 
 export default function Profs({ listeProfs }) {
 
