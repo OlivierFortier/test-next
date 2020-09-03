@@ -17,9 +17,7 @@ const client = new ApolloClient({
 
 export default function Profs({ listeProfs }) {
 
-  const donnees = listeProfs.edges;
-
-  console.log(donnees)
+  console.log(listeProfs);
 
   //avec React , on utilise la méthode .map() pour faire des loops
   // ici , je fais un loop pour chaque professeur dans la requête AJAX.
@@ -28,10 +26,10 @@ export default function Profs({ listeProfs }) {
   return (
     <div>
       <h1>Voici la liste des professeurs</h1>
-       {
-        donnees.map((prof, index) => {
+      {
+        listeProfs.map((prof, index) => {
 
-        return (<Prof key={index} prof={prof} styles={styles}></Prof>)
+        return (<Prof key={prof.node._meta.uid} prof={prof} styles={styles}></Prof>)
 
         })
        }
@@ -43,30 +41,36 @@ export default function Profs({ listeProfs }) {
 //dans une fonction getStaticProps(), sinon ca ne fonctionne pas
 //voici un exemple
 export async function getServerSideProps(context) {
-
   const res = await client.query({
-    query: gql`{
-    allProfesseurs {
-      edges {
-        node {
-          nom
-          description
-          photo
-          _linkType
-          biographie
+    query: gql`
+      {
+        allProfesseurs {
+          edges {
+            node {
+              _meta {
+                uid
+              }
+              nom
+              description
+              photo
+              _linkType
+              biographie
+            }
+          }
         }
       }
-    }
-       }     `,
+    `,
   });
 
-  const listeProfs = await res.data.allProfesseurs;
+  console.log(res)
+
+  const listeProfs = await res.data.allProfesseurs.edges;
+
+  console.log(listeProfs);
 
   return {
     props: {
       listeProfs,
-    },
-
-    revalidate: 1,
+    }
   };
 }
