@@ -52,7 +52,7 @@ export async function getServerSideProps(context) {
         }
       }
     `,
-  }, {options : {fetchPolicy : 'network-only'}});
+  }, {options : {fetchPolicy : 'no-cache'}});
 
   console.log(res);
 
