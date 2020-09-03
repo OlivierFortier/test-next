@@ -42,7 +42,7 @@ export default function Profs({ listeProfs }) {
 //pour avoir la génération statique et avoir un maximum de SEO, on doit faire nos requêtes AJAX
 //dans une fonction getStaticProps(), sinon ca ne fonctionne pas
 //voici un exemple
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
 
   const res = await client.query({
     query: gql`{
