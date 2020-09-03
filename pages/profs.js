@@ -3,16 +3,14 @@ import Prof from "../components/prof";
 // on peut auss importer du CSS avec React
 import styles from "../styles/Profs.module.css";
 
-import {client} from "../libs/apollo"
+import { client } from "../libs/apollo";
 
 // import { PrismicLink } from "apollo-link-prismic";
 // import { InMemoryCache } from "apollo-cache-inmemory";
 // import ApolloClient from "apollo-client";
 import gql from "graphql-tag";
 
-
 export default function Profs({ listeProfs }) {
-
   console.log(listeProfs);
 
   //avec React , on utilise la méthode .map() pour faire des loops
@@ -22,13 +20,11 @@ export default function Profs({ listeProfs }) {
   return (
     <div>
       <h1>Voici la liste des professeurs</h1>
-      {
-        listeProfs.map((prof, index) => {
-
-        return (<Prof key={prof.node._meta.uid} prof={prof} styles={styles}></Prof>)
-
-        })
-       }
+      {listeProfs.map((prof, index) => {
+        return (
+          <Prof key={prof.node._meta.uid} prof={prof} styles={styles}></Prof>
+        );
+      })}
     </div>
   );
 }
@@ -56,9 +52,9 @@ export async function getServerSideProps(context) {
         }
       }
     `,
-  });
+  }, {options : {fetchPolicy : 'network-only'}});
 
-  console.log(res)
+  console.log(res);
 
   const listeProfs = await res.data.allProfesseurs.edges;
 
@@ -67,6 +63,6 @@ export async function getServerSideProps(context) {
   return {
     props: {
       listeProfs,
-    }
+    },
   };
 }

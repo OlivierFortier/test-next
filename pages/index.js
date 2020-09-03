@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -19,10 +20,12 @@ export default function Home() {
           <code className={styles.code}>pages/index.js</code>
         </p>
 
-        <a href="/profs" className={styles.card}>
+        <Link href="/profs">
+        <a className={styles.card}>
             <h3>Profs</h3>
             <p>tester strapi et nextJS</p>
           </a>
+        </Link>
 
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
