@@ -21,12 +21,12 @@ export default function Prof({ styles, prof }) {
   // on peut insérer du code JS dans le html directement avec les {} et {{}}
   return (
     <div className={styles.conteneur}>
-      <h2 className={styles.nomProf}>{prof.node.nom[0].text}</h2>
+      <h2 className={styles.nomProf}>{prof.nom}</h2>
 
       {/* si il y a une photo, alors afficher l'image */}
-      {prof.node.photo.url && <img src={prof.node.photo.url}></img>}
+      {prof.photo.url && <img src={prof.photo.url}></img>}
 
-      <h3 style={{ border: "12px solid brown" }}>{prof.node.description}</h3>
+      <h3 style={{ border: "12px solid brown" }}>{prof.description}</h3>
 
       {/* avec React , quand on veut ajouter une fonction a un bouton,
       on doit mettre la fonction a l'intérieur d'une fonction.
@@ -37,7 +37,7 @@ export default function Prof({ styles, prof }) {
 
       {
         //si bioOuvert est 'true' alors afficher le composant BioProf
-        bioOuvert && <p style={{margin: '0 25%'}} >{prof.node.biographie[0].text}</p>
+        bioOuvert && <BioProf description={prof.biographie} style={{margin: '0 25%'}}/>
       }
     </div>
   );
