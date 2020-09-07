@@ -54,17 +54,27 @@ export default function Profs({ listeProfs }) {
 //on décrit simplement la "forme" dans laquelle on souhaite récupérer nos données du serveur / CMS, sous forme de string
 const requeteGql = gql`
   {
-    professeurCollection {
-      items {
-        nom
-        photo {
-          url
+  professeurCollection {
+    items {
+      nom
+      description
+      biographie
+      photo {
+        url
+      }
+      linkedFrom {
+        courCollection {
+          items {
+            sys {
+              id
+            }
+            nom
+          }
         }
-        description
-        biographie
       }
     }
   }
+}
 `;
 
 //pour avoir la génération statique et avoir un maximum de SEO, on doit faire nos requêtes AJAX

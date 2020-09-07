@@ -37,7 +37,7 @@ export default function Prof({ styles, prof }) {
 
       {
         //si bioOuvert est 'true' alors afficher le composant BioProf
-        bioOuvert && <BioProf description={prof.biographie} style={{margin: '0 25%'}}/>
+        bioOuvert && <BioProf bio={prof.biographie} cours={prof.linkedFrom.courCollection} style={{margin: '0 25%'}}/>
       }
     </div>
   );
