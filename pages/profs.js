@@ -12,6 +12,7 @@ import useSWR from "swr"
 
 //j'importe ma fonction pour faire des requêtes GraphQl par AJAX
 import {faireRequeteGql} from "../libs/requetesDonnes"
+import { gql } from "graphql-request";
 
 
 //mon composant de page react
@@ -51,7 +52,7 @@ export default function Profs({ listeProfs }) {
 
 //la requête graphql , s'apparente à une requête SQL.
 //on décrit simplement la "forme" dans laquelle on souhaite récupérer nos données du serveur / CMS, sous forme de string
-const requeteGql = `
+const requeteGql = gql`
   {
     professeurCollection {
       items {
