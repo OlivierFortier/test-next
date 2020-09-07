@@ -2,6 +2,15 @@ import { useRouter } from "next/router";
 import { faireRequeteGql } from "../../libs/requetesDonnes";
 import { gql } from "graphql-request";
 
+export default function Cour({ cour }) {
+  return (
+    <div>
+      <h1>{cour.nom}</h1>
+      <h2>{cour.description}</h2>
+    </div>
+  );
+}
+
 const reqGql = gql`
   query maRequete($idCours: String!) {
     cour(id: $idCours) {
@@ -37,21 +46,9 @@ export async function getStaticPaths() {
     }
   `);
 
+  const paths = lesCours.courCollection.items.map((cour) => `/cours/${cour.sys.id}`)
+
   return {
-    paths: lesCours.courCollection.items.map((cour) => {
-      return {
-        params: { id: cour.sys.id }
-      };
-    }), fallback : true
+    paths , fallback : false
   };
-}
-
-
-export default function Cour({ cour }) {
-  return (
-    <div>
-      <h1>{cour.nom}</h1>
-      <h2>{cour.description}</h2>
-    </div>
-  );
 }
