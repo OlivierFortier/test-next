@@ -23,8 +23,10 @@ export default function Profs({ listeProfs }) {
 
   return (
     <div>
+      {/* chaque page devrait avoir un Head avec au moins un title et une description pour le référencement et le SEO */}
       <Head>
         <title>Les Profs</title>
+        <meta name="Description" content="La liste des professeurs du TIM."></meta>
       </Head>
       <h1>Voici la liste des professeurs</h1>
 
@@ -51,6 +53,7 @@ const requeteGql = gql`
         biographie
         photo {
           url
+          fileName
         }
         linkedFrom {
           courCollection {

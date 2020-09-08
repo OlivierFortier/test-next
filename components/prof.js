@@ -23,8 +23,9 @@ export default function Prof({ styles, prof }) {
     <div className={styles.conteneur}>
       <h2 className={styles.nomProf}>{prof.nom}</h2>
 
-      {/* si il y a une photo, alors afficher l'image */}
-      {prof.photo.url && <img src={prof.photo.url}></img>}
+      {/* si il y a une photo, alors afficher l'image 
+        AUSSI IMPORTANT : inclure un attribut alt sur chaque image, et loading=lazy*/}
+      {prof.photo.url && <img src={prof.photo.url} alt={prof.photo.fileName} loading="lazy"></img>}
 
       <h3 style={{ border: "12px solid brown" }}>{prof.description}</h3>
 

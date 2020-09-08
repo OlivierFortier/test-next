@@ -8,8 +8,11 @@ import Head from 'next/head'
 export default function Cour({ cour }) {
   return (
     <div>
+      {/* Comme j'ai dis précédemment pour chaque page, il faut avoir un Head avec un title et une meta description
+        on peut la générer dynamiquement aussi, comme tel */}
       <Head>
         <title>{cour.nom}</title>
+        <meta name="Description" content={`cours TIM : ${cour.nom} , ${cour.description}`}></meta>
       </Head>
       <h1>{cour.nom}</h1>
       <h2>{cour.description}</h2>

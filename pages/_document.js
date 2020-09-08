@@ -12,10 +12,11 @@ class MyDocument extends Document {
   }
 
   render() {
-      console.log("allo")
     return (
       <Html lang="fr">
-        <Head />
+        <Head >
+        <link rel="canonical" href="https://test-next-steel.vercel.app/"/>
+        </Head>
         <body>
           <Main />
           <NextScript />
