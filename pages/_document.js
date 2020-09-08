@@ -15,7 +15,6 @@ class MyDocument extends Document {
     return (
       <Html lang="fr">
         <Head >
-        <link rel="canonical" href="https://test-next-steel.vercel.app/"/>
         </Head>
         <body>
           <Main />
