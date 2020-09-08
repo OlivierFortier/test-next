@@ -30,7 +30,7 @@ export default function Profs({ listeProfs }) {
         <meta name="Description" content="La liste des professeurs du TIM."></meta>
         <link rel="canonical" href="https://test-next-steel.vercel.app/profs"/>
       </Head>
-      <h1>Voici la liste des professeurs</h1>
+      <h1 className={styles.nomProf}>Voici la liste des professeurs</h1>
 
       {/* comme j'ai dis plus tot, je fais un loop avec .map(), puisqu'on ne peut pas utiliser de "for" */}
 
@@ -40,6 +40,14 @@ export default function Profs({ listeProfs }) {
           <Prof key={index} prof={prof} styles={styles}></Prof>
         );
       })}
+      <style jsx>{`
+        h1 {
+          color : red;
+          margin: auto 0;
+          display: block;
+        }
+
+      `}</style>
     </div>
   );
 }
