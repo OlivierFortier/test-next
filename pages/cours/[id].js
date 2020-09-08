@@ -1,11 +1,18 @@
 import { faireRequeteGql } from "../../libs/requetesDonnes";
 import { gql } from "graphql-request";
 import Head from 'next/head'
+import {useRouter} from 'next/router'
 
 // le fichier à les [] dans son nom car elle servira à générer des pages automatiquement selon un ID
 
 /* exemple de génération de page automatiquement selon les données */
 export default function Cour({ cour }) {
+
+  //je vais chercher les informations sur le routeur (paramètres d'url, etc)
+  const router = useRouter()
+
+  const idPage = router.query.id
+
   return (
     <div>
       {/* Comme j'ai dis précédemment pour chaque page, il faut avoir un Head avec un title et une meta description
@@ -13,6 +20,7 @@ export default function Cour({ cour }) {
       <Head>
         <title>{cour.nom}</title>
         <meta name="Description" content={`cours TIM : ${cour.nom} , ${cour.description}`}></meta>
+        <link rel="canonical" href={`https://test-next-steel.vercel.app/cours/${idPage}`}/>
       </Head>
       <h1>{cour.nom}</h1>
       <h2>{cour.description}</h2>

@@ -23,10 +23,12 @@ export default function Profs({ listeProfs }) {
 
   return (
     <div>
-      {/* chaque page devrait avoir un Head avec au moins un title et une description pour le référencement et le SEO */}
+      {/* chaque page devrait avoir un Head avec au moins un title et une description pour le référencement et le SEO 
+        idéalement aussi un link qui point à la page tel que plus bas*/}
       <Head>
         <title>Les Profs</title>
         <meta name="Description" content="La liste des professeurs du TIM."></meta>
+        <link rel="canonical" href="https://test-next-steel.vercel.app/profs"/>
       </Head>
       <h1>Voici la liste des professeurs</h1>
 
