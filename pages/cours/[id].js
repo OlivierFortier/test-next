@@ -28,7 +28,7 @@ export default function Cour({ cour }) {
   );
 }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
 
   /*je prépare ma requête graphQL pour avoir le nom et la description d'un cour 
   cette requete contient une variable ,comme les requetes préparées SQL
@@ -52,34 +52,34 @@ export async function getStaticProps(context) {
   return {
     props: unCour, 
     //on regénère la page dans le background, pour réagir aux changement de données dans le CMS
-    revalidate : 1
+    //revalidate : 1
   };
 }
 
-//la fonction getStaticPaths permet de générer automatiquement des pages selon les données recues
-export async function getStaticPaths() {
+// //la fonction getStaticPaths permet de générer automatiquement des pages selon les données recues
+// export async function getStaticPaths() {
 
-  //je prépare une requête graphQL pour avoir la liste de tous les cours, leur id, nom et description
-  const lesCours = await faireRequeteGql(gql`
-    {
-      courCollection {
-        items {
-          sys {
-            id
-          }
-          nom
-          description
-        }
-      }
-    }
-  `);
+//   //je prépare une requête graphQL pour avoir la liste de tous les cours, leur id, nom et description
+//   const lesCours = await faireRequeteGql(gql`
+//     {
+//       courCollection {
+//         items {
+//           sys {
+//             id
+//           }
+//           nom
+//           description
+//         }
+//       }
+//     }
+//   `);
 
-    //je génère les pages automatiquement pour chaque cour, selon leur id
-  const paths = lesCours.courCollection.items.map( (cour) => `/cours/${cour.sys.id}` );
+//     //je génère les pages automatiquement pour chaque cour, selon leur id
+//   const paths = lesCours.courCollection.items.map( (cour) => `/cours/${cour.sys.id}` );
 
-  return {
-    paths,
-    //paramètre obligatoire, va afficher automatiquement une page d'erreur si il y a une erreur
-    fallback: false,
-  };
-}
+//   return {
+//     paths,
+//     //paramètre obligatoire, va afficher automatiquement une page d'erreur si il y a une erreur
+//     fallback: false,
+//   };
+// }
