@@ -1,33 +1,17 @@
 //j'importe le composant prof afin de pouvoir l'utiliser plusieurs fois dans ma page avec un loop
 import Prof from "../components/prof";
 
-//on importe les fonctions qu'on a besoin de react
-import { useState, useEffect } from 'react';
-
 // on peut auss importer du CSS avec React
 import styles from "../styles/Profs.module.css";
 
-//j'importe le hook useSWR qui permet d'optimiser nos requetes AJAX
-import useSWR from "swr"
-
 //j'importe ma fonction pour faire des requêtes GraphQl par AJAX
-import {faireRequeteGql} from "../libs/requetesDonnes"
+import { faireRequeteGql } from "../libs/requetesDonnes";
 import { gql } from "graphql-request";
-
 
 //mon composant de page react
 export default function Profs({ listeProfs }) {
-
-  //j'utilise le "hook" useSWR (ne fais pas directement partie de React)
-  //afin de soumettre une requete GraphQl par AJAX.
-  //ce hook va automatiquement télécharger les données les plus a jour par AJAX , et les mettre dans le cache
-  //en gros , c'est super efficace et ca nous facilite grandement la vie.
-  //pas obligé de comprendre les détails.
-  const {data : reponse} = useSWR(requeteGql, faireRequeteGql, {initialData: listeProfs})
-
-  //je fouille dans le json obtenu par AJAX afin d'obtenir les données
-  //dont j'ai besoin pour utilisation facile
-  const lesProfs = reponse.professeurCollection.items
+  //je prends les données dont j'ai besoin depuis les props
+  const lesProfs = listeProfs.professeurCollection.items;
 
   //avec React , on utilise la méthode .map() pour faire des loops
   // ici , je fais un loop pour chaque professeur dans la requête AJAX.
@@ -54,40 +38,42 @@ export default function Profs({ listeProfs }) {
 //on décrit simplement la "forme" dans laquelle on souhaite récupérer nos données du serveur / CMS, sous forme de string
 const requeteGql = gql`
   {
-  professeurCollection {
-    items {
-      nom
-      description
-      biographie
-      photo {
-        url
-      }
-      linkedFrom {
-        courCollection {
-          items {
-            sys {
-              id
+    professeurCollection {
+      items {
+        nom
+        description
+        biographie
+        photo {
+          url
+        }
+        linkedFrom {
+          courCollection {
+            items {
+              sys {
+                id
+              }
+              nom
             }
-            nom
           }
         }
       }
     }
   }
-}
 `;
 
 //pour avoir la génération statique et avoir un maximum de SEO, on doit faire nos requêtes AJAX
 //dans une fonction getStaticProps(), sinon ca ne fonctionne pas
 export async function getStaticProps(context) {
-
   //je fais une requete GraphQL , qui utilise la méthode AJAX, pour aller chercher des données dans le CMS contentful
-  const listeProfs = await faireRequeteGql(requeteGql)
+  const listeProfs = await faireRequeteGql(requeteGql);
 
   //je retourne ces données , qui seront utilisées en tant que props / paramètre dans le composant plus haut
   return {
     props: {
       listeProfs,
     },
+    //avec l'option revalidate, même si la page est complètement statique , on peut la regénérer dans le background
+    //quand on change des données sur le CMS, sans avoir a refaire un "build"
+    revalidate: 1,
   };
 }
