@@ -1,10 +1,16 @@
 import { faireRequeteGql } from "../../libs/requetesDonnes";
 import { gql } from "graphql-request";
+import Head from 'next/head'
+
+// le fichier à les [] dans son nom car elle servira à générer des pages automatiquement selon un ID
 
 /* exemple de génération de page automatiquement selon les données */
 export default function Cour({ cour }) {
   return (
     <div>
+      <Head>
+        <title>{cour.nom}</title>
+      </Head>
       <h1>{cour.nom}</h1>
       <h2>{cour.description}</h2>
     </div>

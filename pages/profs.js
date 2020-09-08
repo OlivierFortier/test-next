@@ -8,6 +8,9 @@ import styles from "../styles/Profs.module.css";
 import { faireRequeteGql } from "../libs/requetesDonnes";
 import { gql } from "graphql-request";
 
+//j'importe le composant head qui me permet de changer dynamiquement les métadonneées de la page
+import Head from "next/head";
+
 //mon composant de page react
 export default function Profs({ listeProfs }) {
   //je prends les données dont j'ai besoin depuis les props
@@ -20,6 +23,9 @@ export default function Profs({ listeProfs }) {
 
   return (
     <div>
+      <Head>
+        <title>Les Profs</title>
+      </Head>
       <h1>Voici la liste des professeurs</h1>
 
       {/* comme j'ai dis plus tot, je fais un loop avec .map(), puisqu'on ne peut pas utiliser de "for" */}
