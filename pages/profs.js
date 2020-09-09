@@ -1,6 +1,7 @@
 //j'importe le composant prof afin de pouvoir l'utiliser plusieurs fois dans ma page avec un loop
 // nouveau commentaire
 // allo!
+// Salut !
 import Prof from "../components/prof";
 
 // on peut auss importer du CSS avec React
