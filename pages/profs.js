@@ -1,5 +1,6 @@
 //j'importe le composant prof afin de pouvoir l'utiliser plusieurs fois dans ma page avec un loop
 // nouveau commentaire
+// allo!
 import Prof from "../components/prof";
 
 // on peut auss importer du CSS avec React
@@ -28,8 +29,11 @@ export default function Profs({ listeProfs }) {
         idéalement aussi un link qui point à la page tel que plus bas*/}
       <Head>
         <title>Les Profs</title>
-        <meta name="Description" content="La liste des professeurs du TIM."></meta>
-        <link rel="canonical" href="https://test-next-steel.vercel.app/profs"/>
+        <meta
+          name="Description"
+          content="La liste des professeurs du TIM."
+        ></meta>
+        <link rel="canonical" href="https://test-next-steel.vercel.app/profs" />
       </Head>
       <h1 className={styles.nomProf}>Voici la liste des professeurs</h1>
 
@@ -43,11 +47,10 @@ export default function Profs({ listeProfs }) {
       })}
       <style jsx>{`
         h1 {
-          color : red;
+          color: red;
           margin: auto 0;
           display: block;
         }
-
       `}</style>
     </div>
   );
